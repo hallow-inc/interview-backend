@@ -1,6 +1,12 @@
 # Interview
 
-This repository contains two different challenges. Please review all files. Database access as well as which challenge you will be starting with will be provided at the start.
+This repository contains two different challenges, the one you will work on will be chosen at random during the interview.
+
+General Requirements:
+- Please have the code checked out and your environment ready to begin at the start of the interview
+- Some stub code has been provided, you do not have to use it or even use Javascript if you do not wish
+- Review all files and instructions before beginning
+- Database access to the data source will be provided during the interview
 
 ## User Activity
 Create a function which parses a list of activity located in the "sessions"
