@@ -10,7 +10,7 @@ between the date the user is created through today with session activity intertw
 
 Note: There will not be session activity for every day
 
-Details:
+### Details
 - Each streak key is an integer representing a part of a streak UI: none, start,
 middle, end. 
      Examples:
@@ -20,7 +20,7 @@ middle, end.
 - is_today should only be true if the date is actually today
 - has_session should only be true if that given day has a session
 
-Relevant Schema:
+### Relevant Schema
 ```
 sessions
 - id: int
@@ -36,7 +36,7 @@ Implement the following logic below to create a function which returns the next
 prayer a user should play. As inputs it should take a user's past sessions into
 consideration as well as their category preferences.
 
-Logic:
+### Logic
 - Take the user's last completed prayer and see if there is a prayer that comes after it
 in the parent collection using its order key. If there is one, return it
 - If there are no remaining prayers, find a new collection for the user and return
@@ -50,8 +50,7 @@ the first uncompleted prayer in that collection
 - If a user has no more collections left that they are interested in, randomly pick
 a collection and prayer
 
-
-Relevant schema:
+### Relevant Schema
 ```
 users
 - id: int

@@ -20,7 +20,7 @@
  * a collection and prayer
  * 
  * 
- * Relevant schema:
+ * Relevant Schema:
  * users
  * - id: int
  * - name: varchar
