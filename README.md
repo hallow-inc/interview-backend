@@ -36,6 +36,14 @@ sessions
 - created_at: timestamp
 ```
 
+```
+users
+- id: int
+- created_at: timestamp
+```
+
+A few date handling libraries which could be helpful have been included as dependencies for you. 
+
 ## Nextup
 
 Implement the following logic below to create a function which returns the next

@@ -16,10 +16,12 @@ const nextup = require('./nextup')
 
 activity(database, 1)
 .then((results) => {
-    console.log('activity results:', results)
+    console.log('activity results:')
+    console.table(results)
     return nextup(database, 2)
 })
 .then((result) => {
-    console.log('next up result:', result)
+    console.log('next up results:')
+    console.table(result)
 })
 .catch(console.error)
