@@ -12,11 +12,12 @@
  * - Each streak key is an integer representing a part of a streak UI: none, start,
  * middle, end. 
  *      Examples:
- *      - If a streak is only a single session, it should be "middle"
+ *      - If a streak is only one long, it should be "middle"
  *      - If a streak is four long it should be start, middle, middle, end
  *      - If it is two long, it would just be start, end
  * - is_today should only be true if the date is actually today
  * - has_session should only be true if that given day has a session
+ * - Sessions only count if they are complete
  * 
  * Relevant Schema:
  * sessions
@@ -24,6 +25,10 @@
  * - user_id: int
  * - prayer_id: int
  * - is_complete: boolean
+ * - created_at: timestamp
+ * 
+ * users
+ * - id: int
  * - created_at: timestamp
  */
 
