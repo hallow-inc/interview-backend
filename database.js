@@ -11,21 +11,23 @@
  * or use the query builder to do something like `knex('sessions').where('thing1', '=', var1)`
  */
 
-const knex = require('knex')({
-    client: 'mysql2',
-    connection: {
-        host : process.env.DB_HOST,
-        user : process.env.DB_USERNAME,
-        password : process.env.DB_PASSWORD,
-        database : process.env.DB_DATABASE,
-        port: process.env.DB_PORT,
-        typeCast: function(field, next) {
-            if (field.type == 'TINY' && field.length == 1) {
-                return (field.string() == '1')
+function connectDB() {
+    return require('knex')({
+        client: 'mysql2',
+        connection: {
+            host : process.env.DB_HOST,
+            user : process.env.DB_USERNAME,
+            password : process.env.DB_PASSWORD,
+            database : process.env.DB_DATABASE,
+            port: process.env.DB_PORT,
+            typeCast: function(field, next) {
+                if (field.type == 'TINY' && field.length == 1) {
+                    return (field.string() == '1')
+                }
+                return next()
             }
-            return next()
         }
-    }
-})
+    })
+};
 
-module.exports = knex
+module.exports = connectDB;

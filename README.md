@@ -7,6 +7,7 @@ General Requirements:
 - Some stub code has been provided, you do not have to use it or even use Javascript if you do not wish
 - Review all files and instructions before beginning
 - Database access to the data source will be provided during the interview
+    - We'll provide you with a password that you'll input twice - once in the `.env` file and again when starting the database with `npm run setup`
 
 ## User Activity
 Create a function which parses a list of activity located in the "sessions"
