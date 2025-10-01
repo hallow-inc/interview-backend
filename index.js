@@ -9,19 +9,22 @@ const nextup = require('./nextup')
  * 
  * Database details can be found in the "database" file
  * 
- * To get everything installed run "npm install"
+ * To get everything installed & set up run "npm run setup"
  * 
  * Once the functions are completed you can run them using "npm start"
  */
 
-activity(database, 1)
-.then((results) => {
-    console.log('activity results:')
-    console.table(results)
-    return nextup(database, 2)
-})
-.then((result) => {
-    console.log('next up results:')
-    console.table(result)
-})
-.catch(console.error)
+const db = database()
+
+activity(db, 1)
+    .then((results) => {
+        console.log('activity results:')
+        console.table(results)
+        return nextup(database, 2)
+    })
+    .then((result) => {
+        console.log('next up results:')
+        console.table(result)
+    })
+    .catch(console.error)
+    .finally(() => db.destroy())
