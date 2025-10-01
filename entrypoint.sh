@@ -10,7 +10,7 @@ if openssl enc -aes-256-cbc -d -pbkdf2 -in "$ENCRYPTED_FILE" -out "$DECRYPTED_FI
     echo "Database decrypted successfully!"
     rm "$ENCRYPTED_FILE"
 else
-    echo "ERROR: Failed to decrypt database. Incorrect password provided."
+    echo "ERROR: Failed to decrypt database seed. Incorrect password provided."
     exit 1
 fi
 

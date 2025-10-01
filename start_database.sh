@@ -7,13 +7,13 @@ echo "  Interview Database Setup"
 echo "======================================="
 echo ""
 
-if docker ps -a --format '{{.Names}}' | grep -q "^database$"; then
-    echo "Container 'database' already exists."
+if docker ps -a --format '{{.Names}}' | grep -q "^my-interview-db$"; then
+    echo "Container 'my-interview-db' already exists."
     read -p "Do you want to remove it and start fresh? (y/n): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo "Removing existing container..."
-        docker rm -f database && docker image rm interview-db:latest
+        docker rm -f my-interview-db && docker image rm interview-db:latest
     else
         echo "Exiting. Please remove the container manually or use a different name."
         exit 1
@@ -37,22 +37,22 @@ fi
 
 echo "Starting database container..."
 docker run -d \
-  -p 3306:3306 \
+  -p 63306:3306 \
   -e MYSQL_ROOT_PASSWORD="$PASSWORD" \
-  --name database \
+  --name my-interview-db \
   interview-db:latest
 
 echo ""
 echo "Waiting for database to initialize..."
 sleep 3
 
-if docker ps --format '{{.Names}}' | grep -q "^database$"; then
+if docker ps --format '{{.Names}}' | grep -q "^my-interview-db$"; then
     echo ""
     echo "Database is running!"
     echo ""
 else
     echo ""
     echo "ERROR: Failed to start database. Check logs:"
-    echo "  docker logs database"
+    echo "  docker logs my-interview-db"
     exit 1
 fi
