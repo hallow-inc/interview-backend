@@ -5,10 +5,13 @@ This repository contains two different challenges, the one you will work on will
 General Requirements:
 - Please have the code checked out and your environment ready to begin at the start of the interview
 - Some stub code has been provided, you do not have to use it or even use Javascript if you do not wish
-    - You will need to run `npm run setup` to get all packages downloaded and the database container stood up to start.
+    - The stub code is written in TypeScript. You will need to run `npm run setup` to get all packages downloaded and the database container stood up to start.
 - Review all files and instructions before beginning
 - Database access to the data source will be provided during the interview
     - We'll provide you with a password that you'll input twice - once in the `.env` file and again when starting the database with `npm run setup`
+- Once you have implemented the functions, run them with `npm start`
+    - You can also run `npm run typecheck` to check types without running, or `npm run build` to compile to `dist/`
+    - Zod schemas in `types.ts` (e.g. `activityResultSchema`) are wired into `index.ts` to validate that your output matches the expected shape at runtime
 
 ## User Activity
 Create a function which parses a list of activity located in the "sessions"

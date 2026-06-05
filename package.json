@@ -2,14 +2,17 @@
   "name": "interview-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "db:start": "sh start_database.sh",
     "db:stop": "docker stop my-interview-db && docker rm my-interview-db",
     "db:destroy": "npm run db:stop && docker image rm interview-db:latest",
     "db:reset": "npm run db:stop && npm run db:start",
     "setup": "npm install && npm run db:start",
-    "start": "node -r dotenv/config index.js"
+    "typecheck": "tsc --noEmit",
+    "test": "ts-node activity.test.ts",
+    "build": "tsc",
+    "start": "ts-node -r dotenv/config index.ts"
   },
   "author": "hallow",
   "license": "ISC",
@@ -18,6 +21,12 @@
     "dotenv": "^17.2.3",
     "knex": "^0.95.5",
     "moment": "^2.29.4",
-    "mysql2": "^2.2.5"
+    "mysql2": "^2.2.5",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
   }
 }
