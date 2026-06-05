@@ -4,7 +4,7 @@
  * Implement the following logic below to create a function which returns the next
  * prayer a user should play. As inputs it should take a user's past sessions into
  * consideration as well as their category preferences.
- * 
+ *
  * Logic:
  * - Take the user's last completed prayer and see if there is a prayer that comes after it
  * in the parent collection using its order key. If there is one, return it
@@ -18,8 +18,8 @@
  *      - Select the first collection from that list
  * - If a user has no more collections left that they are interested in, randomly pick
  * a collection and prayer
- * 
- * 
+ *
+ *
  * Relevant Schema:
  * users
  * - id: int
@@ -27,19 +27,19 @@
  * - categories: json (may need to be parsed from string)
  * - timezone: varchar
  * - created_at: timestamp
- * 
+ *
  * sessions
  * - id: int
  * - user_id: int
  * - prayer_id: int
  * - is_complete: boolean
  * - created_at: timestamp
- * 
+ *
  * collections
  * - id: int
  * - category: int
  * - title: varchar
- * 
+ *
  * prayers
  * - id: int
  * - collection_id: int
@@ -47,12 +47,18 @@
  * - order: int
  */
 
+import { Knex } from 'knex'
+import { NextUpResult } from './types'
+
 // Categories:
 const SLEEP = 1
 const CHALLENGE = 2
 const DAILY = 3
 
-module.exports = async function nextup(database, userId) {
+export default async function nextup(
+    database: Knex,
+    userId: number,
+): Promise<NextUpResult | undefined> {
 
     // Output: A single prayer
     // {
@@ -61,4 +67,5 @@ module.exports = async function nextup(database, userId) {
     //     "title": "Opening the door to God",
     //     "order": 1
     // }
+    return undefined
 }
