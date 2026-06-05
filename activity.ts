@@ -49,14 +49,16 @@ export default async function activity(
     // Output: An array of activity
     // [
     //     {
+    //       "has_session": false,
     //       "is_today": false,
     //       "streak": 0,
-    //       "date": "2021-05-01T12:00:00.000Z"
+    //       "date": "2026-05-01T12:00:00.000Z"
     //     },
     //     {
+    //       "has_session": true,
     //       "is_today": true,
     //       "streak": 1,
-    //       "date": "2021-05-13T12:00:00.000Z"
+    //       "date": "2026-05-13T12:00:00.000Z"
     //     },
     //     ...
     // ]

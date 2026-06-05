@@ -65,6 +65,7 @@ export type Prayer = z.infer<typeof prayerSchema>
 // --- `activity` output ---
 export const activityEntrySchema = z.object({
     is_today: z.boolean(),
+    has_session: z.boolean(),
     streak: streakSchema,
     date: z.iso.datetime(),
 })

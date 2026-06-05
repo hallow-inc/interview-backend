@@ -10,6 +10,7 @@
     "db:reset": "npm run db:stop && npm run db:start",
     "setup": "npm install && npm run db:start",
     "typecheck": "tsc --noEmit",
+    "test": "ts-node activity.test.ts",
     "build": "tsc",
     "start": "ts-node -r dotenv/config index.ts"
   },
