@@ -13,7 +13,13 @@ import 'dotenv/config'
 import assert from 'node:assert/strict'
 import database from './database'
 import activity from './activity'
-import { activityResultSchema, STREAK_START, STREAK_MIDDLE, STREAK_END } from './types'
+import {
+    activityResultSchema,
+    STREAK_NONE,
+    STREAK_START,
+    STREAK_MIDDLE,
+    STREAK_END,
+} from './types'
 
 const USER_ID = Number(process.env.TEST_USER_ID ?? 1)
 const dayKey = (d: Date | string): string => new Date(d).toISOString().slice(0, 10)
@@ -71,6 +77,21 @@ async function main() {
             assert.equal(result.filter((e) => e.is_today).length, 1, 'exactly one entry should be is_today')
             assert.equal(result[result.length - 1].is_today, true, 'today must be the last entry')
             assert.equal(dayKey(result[result.length - 1].date), dayKey(new Date()))
+        })
+
+        await test('output actually contains activity (not all zero / no sessions)', () => {
+            // Sanity check, not an exact assertion: a correct run against a user
+            // with sessions must surface at least one session day and at least
+            // one non-NONE streak. All-zero output means the logic isn't working
+            // (or TEST_USER_ID points at a user with no completed sessions).
+            assert.ok(
+                result.some((e) => e.has_session),
+                'no day has has_session=true — expected at least one completed session',
+            )
+            assert.ok(
+                result.some((e) => e.streak !== STREAK_NONE),
+                'every streak is NONE — expected at least one start/middle/end marker',
+            )
         })
 
         await test('each streak runs start → middle → end in the order the spec requires', () => {

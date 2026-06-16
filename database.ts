@@ -7,8 +7,9 @@
  * Feel free to use whatever tool you would like to access data. Connection details
  * can be found in the .env file
  *
- * At it's most basic you could run: `knex.raw('SELECT ...', var1, var2)` for raw queries
- * or use the query builder to do something like `knex('sessions').where('thing1', '=', var1)`
+ * `database` is an instance of Knex, where you see `knex.` in the docs you can use `database.`
+ * At it's most basic you could run: `database.raw('SELECT ...', var1, var2)` for raw queries
+ * or use the query builder to do something like `database('sessions').where('thing1', '=', var1)`
  */
 
 import knex, { Knex } from 'knex'
